@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.elgg.org/plugin_manifest/1.8" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Types definition -->
+	<xs:complexType name="constraintType">
+		<xs:choice maxOccurs="unbounded" minOccurs="0">
+			<xs:element name="type">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="elgg_version"/>
+						<xs:enumeration value="elgg_release"/>
+						<xs:enumeration value="php_extension"/>
+						<xs:enumeration value="php_ini"/>
+						<xs:enumeration value="php_version"/>
+						<xs:enumeration value="plugin"/>
+						<xs:enumeration value="priority"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element type="xs:string" name="version" minOccurs="0"/>
+			<xs:element type="xs:string" name="name" minOccurs="0"/>
+			<xs:element type="xs:string" name="value" minOccurs="0"/>
+			<xs:element type="xs:string" name="comparison" minOccurs="0"/>
+			<xs:element type="xs:string" name="priority" minOccurs="0"/>
+			<xs:element type="xs:string" name="plugin" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="screenshotType">
+		<xs:all>
+			<xs:element name="path">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="description">
+				<xs:simpleType>
+					<xs:restriction base="xs:string"/>
+				</xs:simpleType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="contributorType">
+		<xs:choice maxOccurs="unbounded" minOccurs="0">
+			<xs:element type="xs:string" name="name"/>
+			<xs:element type="xs:string" name="email"/>
+			<xs:element type="xs:string" name="website"/>
+			<xs:element type="xs:string" name="username"/>
+			<xs:element type="xs:string" name="description"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<!-- Structural requirements -->
+	<xs:element name="plugin_manifest">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded" minOccurs="5">
+				<xs:element type="xs:string" name="name" maxOccurs="1" minOccurs="1"/>
+				<xs:element type="xs:string" name="author" maxOccurs="1" minOccurs="1"/>
+				<xs:element type="xs:string" name="version" maxOccurs="1" minOccurs="1"/>
+				<xs:element type="xs:string" name="blurb" maxOccurs="1"/>
+				<xs:element type="xs:string" name="description" maxOccurs="1" minOccurs="1"/>
+				<xs:element type="xs:string" name="id" maxOccurs="1"/>
+				<xs:element type="xs:string" name="website" maxOccurs="1"/>
+				<xs:element type="xs:string" name="copyright" maxOccurs="1"/>
+				<xs:element type="xs:string" name="license" maxOccurs="1"/>
+				<xs:element type="ns:constraintType" name="requires" maxOccurs="unbounded" minOccurs="1" xmlns:ns="http://www.elgg.org/plugin_manifest/1.8"/>
+				<xs:element type="ns:constraintType" name="suggests" maxOccurs="unbounded" minOccurs="0" xmlns:ns="http://www.elgg.org/plugin_manifest/1.8"/>
+				<xs:element type="ns:screenshotType" name="screenshot" maxOccurs="unbounded" minOccurs="0" xmlns:ns="http://www.elgg.org/plugin_manifest/1.8"/>
+				<xs:element type="ns:contributorType" name="contributor" maxOccurs="unbounded" minOccurs="0" xmlns:ns="http://www.elgg.org/plugin_manifest/1.8"/>
+				<xs:element type="xs:string" name="category" maxOccurs="unbounded" minOccurs="0"/>
+				<xs:element type="ns:constraintType" name="conflicts" maxOccurs="unbounded" minOccurs="0" xmlns:ns="http://www.elgg.org/plugin_manifest/1.8"/>
+				<xs:element type="ns:constraintType" name="provides" maxOccurs="unbounded" minOccurs="0" xmlns:ns="http://www.elgg.org/plugin_manifest/1.8"/>
+				<xs:element name="activate_on_install" maxOccurs="1">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="true"/>
+							<xs:enumeration value="false"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element type="xs:string" name="repository" maxOccurs="1"/>
+				<xs:element type="xs:string" name="bugtracker" maxOccurs="1"/>
+				<xs:element type="xs:string" name="donations" maxOccurs="1"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

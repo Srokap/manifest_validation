@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://www.elgg.org/plugin_manifest/1.8" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <element name="plugin_manifest">
+            <ref name="name"/>
+            <element name="author">
+                <data type="NCName"/>
+            </element>
+            <ref name="version"/>
+            <element name="blurb">
+                <text/>
+            </element>
+            <ref name="description"/>
+            <ref name="website"/>
+            <element name="repository">
+                <data type="anyURI"/>
+            </element>
+            <element name="bugtracker">
+                <data type="anyURI"/>
+            </element>
+            <element name="donations">
+                <data type="anyURI"/>
+            </element>
+            <element name="copyright">
+                <text/>
+            </element>
+            <element name="license">
+                <text/>
+            </element>
+            <oneOrMore>
+                <choice>
+                    <element name="category">
+                        <data type="NCName"/>
+                    </element>
+                    <element name="contributor">
+                        <ref name="name"/>
+                        <element name="email">
+                            <text/>
+                        </element>
+                        <optional>
+                            <ref name="website"/>
+                            <element name="username">
+                                <data type="NCName"/>
+                            </element>
+                        </optional>
+                        <ref name="description"/>
+                    </element>
+                    <element name="requires">
+                        <ref name="type"/>
+                        <optional>
+                            <element name="priority">
+                                <data type="NCName"/>
+                            </element>
+                            <element name="plugin">
+                                <data type="NCName"/>
+                            </element>
+                        </optional>
+                        <optional>
+                            <ref name="name"/>
+                        </optional>
+                        <optional>
+                            <ref name="version"/>
+                        </optional>
+                        <optional>
+                            <choice>
+                                <element name="comparison">
+                                    <data type="NCName"/>
+                                </element>
+                                <element name="value">
+                                    <data type="NCName"/>
+                                </element>
+                            </choice>
+                        </optional>
+                    </element>
+                    <element name="screenshot">
+                        <ref name="description"/>
+                        <element name="path">
+                            <text/>
+                        </element>
+                    </element>
+                </choice>
+            </oneOrMore>
+            <element name="conflicts">
+                <ref name="type"/>
+                <ref name="name"/>
+                <ref name="version"/>
+            </element>
+            <oneOrMore>
+                <element name="provides">
+                    <ref name="type"/>
+                    <ref name="name"/>
+                    <ref name="version"/>
+                </element>
+            </oneOrMore>
+        </element>
+    </start>
+    <define name="name">
+        <element name="name">
+            <text/>
+        </element>
+    </define>
+    <define name="version">
+        <element name="version">
+            <data type="decimal"/>
+        </element>
+    </define>
+    <define name="description">
+        <element name="description">
+            <text/>
+        </element>
+    </define>
+    <define name="website">
+        <element name="website">
+            <data type="anyURI"/>
+        </element>
+    </define>
+    <define name="type">
+        <element name="type">
+            <data type="NCName"/>
+        </element>
+    </define>
+</grammar>

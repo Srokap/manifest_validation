@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin_manifest xmlns="http://www.elgg.org/plugin_manifest/1.8">
+	<name>My Plugin</name>
+	<author>Elgg</author>
+	<version>1.0</version>
+	<not_defined_field>1.0</not_defined_field>
+	<description>This is a longer, more interesting description of my plugin, its features, and other important information.</description>
+
+	<requires>
+		<type>elgg_version</type>
+		<version>2009030802</version>
+	</requires>
+</plugin_manifest>
